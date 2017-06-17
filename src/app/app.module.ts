@@ -5,6 +5,11 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+
+
+import { NEWS_CONST } from "./app.news-constants";
+
+
 @NgModule({
   declarations: [
     AppComponent

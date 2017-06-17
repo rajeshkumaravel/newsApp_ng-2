@@ -1,3 +1,35 @@
 <h1>
   {{title}}
 </h1>
+<!-- TradingView Widget BEGIN -->
+<span id="tradingview-copyright"><a ref="nofollow" target="_blank" href="http://in.tradingview.com" style="color: rgb(173, 174, 176); font-family: &quot;Trebuchet MS&quot;,Tahoma,Arial,sans-serif; font-size: 13px;">Quotes by <span style="color: #3BB3E4">TradingView</span></a></span>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">{
+  "symbols": [
+    {
+      "proName": "INDEX:SPX",
+      "title": "S&P 500"
+    },
+    {
+      "proName": "INDEX:IUXX",
+      "title": "Nasdaq 100"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR/USD"
+    },
+    {
+      "proName": "NYMEX:CL1!",
+      "title": "Crude Oil"
+    },
+    {
+      "proName": "FX_IDC:XAUUSD",
+      "title": "Gold"
+    }
+  ],
+  "locale": "in"
+}
+</script>
+<!-- TradingView Widget END -->
+<br/><br/><br/>{{globalData}}<br/><br/><br/>
+<h1>globalData1</h1>{{globalData1}}<br/><br/><br/>
+<h1>globalDatatemp</h1>{{globalDatatemp}}

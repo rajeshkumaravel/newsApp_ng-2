@@ -1,7 +1,7 @@
-export const NEWS = {
+export const NEWS_CONST = {
 
     //Base url from which the application is rendered
-    "BASE": "",
+    "BASE": "http://localhost:3000/",
     "USER": "user/",
     "ADMIN": "admin/",
     "WEB":"web/",
@@ -13,7 +13,8 @@ export const NEWS = {
         For constants - APP.CONSTANTS.CONSTANTS_NAME
     */
     APIS: {
-        
+        // "GET_ARTICLES" : "getArticles"
+            "GET_ARTICLES" : "science-and-nature"
     },
 
     MESSAGES: {
