@@ -1,0 +1,52 @@
+<style>
+  .singleArticle {
+    background: lightgray;
+    padding: 10px 15px;
+    margin: 20px 0;
+    height: 300px;
+    position: relative;
+  }
+
+  .articleSpanL {
+    float: left;
+    bottom: 10px;
+    position: absolute;
+    left: 15px;
+  }
+
+  .articleSpanR {
+    float: right;
+    bottom: 10px;
+    position: absolute;
+    right: 15px;
+  }
+
+  .categoryBlock {
+    /*display: inline-block;*/
+    padding: 20px 20px;
+  }
+</style>
+<div class="row">
+  <div class="col-xs-12" *ngFor="let article of results">
+    <div class="categoryBlock row">
+      <div style="background: #aaa;
+    width: 100%;
+    height: 100%;
+    display: block;
+    float: left;">
+      <div class="col-xs-12 col-md-3 singleArticle" style="    background: transparent;text-align: center;display: table-cell;padding: 5% 15px;">
+        <h3>{{article.category}}</h3>
+        <button type="button" class="btn btn-primary" (click)="redirectToCategoryList(article.category)">View All</button>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12" *ngFor="let singleArticle of article.data.articles; let i=index">
+        <div class="singleArticle" *ngIf='i<=2'>
+          <img src="{{singleArticle.urlToImage}}" height="150px" width="150px" />
+          <p>{{singleArticle.title}}</p>
+          <span class="articleSpanL">Source : {{article.data.source}}</span>
+          <span class="articleSpanR">Author : {{singleArticle.author}}</span>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
