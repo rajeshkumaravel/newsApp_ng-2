@@ -20,8 +20,13 @@ export class CateogoryArticleComponent implements OnInit {
     this.route
       .params.subscribe((params: any) => {
        this.category = params.categoryName;
-       this.redirectionCheck(this.category , "top");
-       this.selectedSortBy = "top";
+      if (this.category == "science and nature") {
+        this.category = "nature";
+      }
+      var d = document.getElementById(this.category);
+        d.className += " activeNavBarCategory";
+        this.redirectionCheck(this.category , "top");
+        this.selectedSortBy = "top";
       });
       
       

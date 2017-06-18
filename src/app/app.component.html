@@ -1,3 +1,47 @@
+<style>
+    .navbar-default {
+    background-color: #2874F0;
+    border-color: #2874F0;
+    color: white;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: white;
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+  }
+  .navbar-default .navbar-nav>li>a {
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    font-weight: lighter;
+    line-height: 45px;
+    transition: all 0.3s ease-in-out;
+  }
+   .navbar-default .navbar-nav>li:hover > a {
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+    background-color: #1162e4;
+   }
+  .navbar {
+    border-radius: 0;
+    min-height: 70px;
+  }
+  .navbar-brand {
+    padding: 0;
+    height: auto;
+  }
+  .navbar-brand img {
+    height: 75px;
+    width: 108px;
+  }
+  .activeNavBarCategory {
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+    background-color: #1162e4;
+  }
+  .zBar {
+    cursor: pointer;
+  }
+</style>
 <nav class="navbar navbar-default row">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -8,45 +52,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">
+        <img class="img img-responsive" src="../assets/img/no_image_available.jpeg" />
+      </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
+        <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+        <li id="technology" class="zBar"><a (click)="redirectToCategoryListHome('technology')">Technology</a></li>
+        <li id="general" class="zBar"><a (click)="redirectToCategoryListHome('general')">General</a></li>
+        <li id="sports" class="zBar"><a (click)="redirectToCategoryListHome('sports')">Sports</a></li>
+        <li id="business" class="zBar"><a (click)="redirectToCategoryListHome('business')">Business</a></li>
+        <li id="nature" class="zBar"><a (click)="redirectToCategoryListHome('nature')">Science and Nature</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
