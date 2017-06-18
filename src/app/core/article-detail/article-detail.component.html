@@ -1,3 +1,23 @@
-<p>
-  article-detail works!
-</p>
+<div class="row">
+  <div class="col-md-9">
+    <div class="imgContainer">
+    <a href="{{articleDetail.url}}" target="_blank">
+      <img src="{{articleDetail.urlToImage}}" alt="{{articleDetail.title}}" class="img-responsive articleDetailImg" />
+    </a>
+    </div>
+    <a href="{{articleDetail.url}}" target="_blank">
+      <h2>{{articleDetail.title}}</h2>
+    </a>
+    <span class="articleDetailSpan">By {{articleDetail.author}}</span>
+    <span class="articleDetailSpan">Updated {{articleDetail.publishedAt | date : 'medium'}}</span>
+    <h4>{{articleDetail.description}}</h4>
+  </div>
+  <div class="col-md-3 text-center">
+    <div style="height : 100%;">
+      <a class="twitter-timeline" data-lang="en" data-width="500" data-height="800" data-dnt="true" href="https://twitter.com/nchkapp17/lists/newslist"></a>
+      <!--<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+        twitter.widgets.load();
+      </script>-->
+    </div>
+  </div>
+</div>

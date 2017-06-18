@@ -17,9 +17,9 @@ import { ArticleDetailComponent } from './core/article-detail/article-detail.com
 
 const newsRoutes : Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  //{path: "**", redirectTo: '/home'},
   { path : 'home' , component : HomeComponent , pathMatch : 'full' },
-  { path : 'category/:categoryName' , component : CateogoryArticleComponent , pathMatch : 'full' }
+  { path : 'category/:categoryName' , component : CateogoryArticleComponent , pathMatch : 'full' },
+  { path : 'article/:source/:detail' , component : ArticleDetailComponent , pathMatch : 'full' }
 ];
 
 @NgModule({

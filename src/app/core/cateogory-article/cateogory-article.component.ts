@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ArticlesService } from "../../utils/services/articles/articles.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-cateogory-article',
@@ -8,54 +9,96 @@ import { ArticlesService } from "../../utils/services/articles/articles.service"
   styleUrls: ['./cateogory-article.component.css']
 })
 export class CateogoryArticleComponent implements OnInit {
+  selectedSortBy: any;
   result: string;
   category: any;
 
-  constructor( private route: ActivatedRoute , private articlesService : ArticlesService) { 
+  constructor( private route: ActivatedRoute , private articlesService : ArticlesService , private router: Router , private titleService: Title) { 
    }
 
   ngOnInit() {
     this.route
       .params.subscribe((params: any) => {
        this.category = params.categoryName;
+       this.redirectionCheck(this.category , "top");
+       this.selectedSortBy = "top";
       });
-      if(this.category == "technology") {
-        this.getTechnologyArticles();
-      }    
+      
+      
   }
-  getTechnologyArticles() {
-    var reqObj = {sortType : "latest"}
+  sortBySelected(selected) {
+    this.selectedSortBy = selected;
+    this.redirectionCheck(this.category , selected);
+  }
+  redirectionCheck(category , sort) {
+    if (category == "technology") {
+      this.setTitle("NEWS APP :: Technology");
+      this.getTechnologyArticles(sort);
+    }
+    else if (category == "general") {
+      this.setTitle("NEWS APP :: General");
+      this.getGeneralArticles(sort);
+    }
+    else if (category == "sports") {
+      console.log(category , sort); 
+      this.setTitle("NEWS APP :: Sports");
+      this.getSportsArticles(sort);
+    }
+    else if (category == "business") {
+      this.setTitle("NEWS APP :: Business");
+      this.getBusinessArticles(sort);
+    }
+    else if (category == "nature") {
+      this.setTitle("NEWS APP :: Science and Nature");
+      this.getScienceAndNatureArticles(sort);
+    }
+  }
+
+  public setTitle(title) {
+    this.titleService.setTitle( title );
+  }
+  
+  getTechnologyArticles(sort) {
+    var reqObj = {sortType : sort}
     this.articlesService.getTechnologyArticles(reqObj).subscribe(result => {
-      this.result = result;
+      this.result = result.filter(n => n);
     });
   }
 
-  getGeneralArticles() {
-    var reqObj = {sortType : "top"}
+  getGeneralArticles(sort) {
+    var reqObj = {sortType : sort}
     this.articlesService.getGeneralArticles(reqObj).subscribe(result => {
-      this.result = JSON.stringify(result);      
+      this.result = result.filter(n => n);
     });
   }
   
-  getSportsArticles() {
-    var reqObj = {sortType : "latest"}
+  getSportsArticles(sort) {
+    var reqObj = {sortType : sort}
     this.articlesService.getSportsArticles(reqObj).subscribe(result => {
-      this.result = JSON.stringify(result);      
+      this.result = result.filter(n => n);
     });
   }
 
-  getBusinessArticles() {
-    var reqObj = {sortType : "top"}
+  getBusinessArticles(sort) {
+    var reqObj = {sortType : sort}
     this.articlesService.getBusinessArticles(reqObj).subscribe(result => {
-      this.result = JSON.stringify(result);      
+      this.result = result.filter(n => n); 
     });
   }
 
-  getScienceAndNatureArticles() {
-    var reqObj = {sortType : "top"}
+  getScienceAndNatureArticles(sort) {
+    var reqObj = {sortType : sort}
     this.articlesService.getScienceAndNatureArticles(reqObj).subscribe(result => {
-      this.result = JSON.stringify(result);      
+      this.result = result.filter(n => n); 
     });
+  }
+
+  redirectToArticleDetail(articleSource , detail) {
+    location.reload()
+    let source = {};
+    source["source"] = articleSource;
+    source["article"] = JSON.stringify(detail);
+    this.router.navigate(["article", articleSource, JSON.stringify(detail)])
   }
 
 }

@@ -10,13 +10,18 @@
 </div>-->
 <style>
   .singleArticle {
-    background: lightgray;
+    /*background: lightgray;*/
     padding: 0px;
     margin: 20px 0;
-    height: 350px;
+    height: 330px;
     position: relative;
-        border: 1px solid #ddd;
+    border: 1px solid #ddd;
     border-radius: 3px;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  .singleArticle:hover {
+    box-shadow: 0 3px 16px 0 rgba(0, 0, 0, .11);
   }
 
   .articleSpanL {
@@ -24,6 +29,14 @@
     bottom: 0;
     position: absolute;
     right: 15px;
+    padding-bottom: 1%;
+
+    font-size: 1em;
+    font-weight: 400;
+    font-style: normal;
+    font-family: "times new roman", times, serif;
+    color: #878787;
+    text-transform: capitalize;
   }
 
   .articleSpanR {
@@ -32,7 +45,7 @@
     position: absolute;
     right: 0;
     color: #fff;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0, 0, 0, 0.55);
     padding: 10px 15px;
   }
 
@@ -40,12 +53,82 @@
     /*display: inline-block;*/
     padding: 20px 20px;
   }
+
+  .articleImage {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+    max-height: 230px;
+    object-fit: cover;
+    object-position: 100%;
+  }
+
+  .articleTitleP {
+    display: -webkit-box;
+    max-width: 100%;
+    height: 69px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.4;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px 5px;
+    text-align: center;
+  }
+
+  .articleTitleDiv {
+    min-height: 100px;
+  }
+
+  .categoryBlockInner {
+    width: 100%;
+    height: 100%;
+    display: block;
+    float: left;
+  }
+
+  .posR {
+    position: relative
+  }
+
+  .sourceH3 {
+    text-transform: capitalize;
+  }
+  .twitterBlock {
+    position: fixed;
+    right: 0;
+  }
+  @media only screen and (max-width: 992px) {
+    .twitterBlock {
+        display: none;
+    }
+}
+.sortByDropdown select {
+    display: inline-block;
+    width: auto;
+    border: 0;
+    text-shadow: 0 0 0 #000;
+    outline: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #878787;
+    border-radius: 0;
+}
+.sortByDropdown label {
+  font-size: 1.2em;
+  vertical-align: bottom;
+}
+.sortByDropdown select:focus {
+  box-shadow: none;
+}
 </style>
 <div class="row">
   <div class="col-xs-12 text-right">
-    <div class="col-xs-12">
-    <label>Sort by:</label>
-    <select class="form-control" style="display: inline-block;width: auto;">
+    <div class="col-xs-12 sortByDropdown">
+      <label>Sort by:</label>
+      <select [ngModel]="selectedSortBy" class="form-control" (ngModelChange)="sortBySelected($event)">
       <option value="top">Top</option>
       <option value="latest">Latest</option>
     </select>
@@ -55,47 +138,34 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12" *ngFor="let article of result">
+  <div class="col-md-9">
+  <div class="col-xs-12 sourceH3" *ngFor="let article of result">
     <h3 class="col-xs-12">{{article.source}}</h3>
     <div class="categoryBlock row">
-      <div style="
-    width: 100%;
-    height: 100%;
-    display: block;
-    float: left;">
-      <!--<div class="col-xs-12 col-md-3 singleArticle" style="    background: transparent;text-align: center;display: table-cell;padding: 5% 15px;">
-        <h3>{{article.source}}</h3>
-        <button type="button" class="btn btn-primary" (click)="redirectToCategoryList(article.category)">View All</button>
-      </div>-->
-      <div class="col-md-3 col-sm-6 col-xs-12" *ngFor="let singleArticle of article.articles;">
-        <div class="singleArticle">
-          <div style="position:relative">
-            <span class="articleSpanR">Author : {{singleArticle.author}}</span>
-          <img src="{{singleArticle.urlToImage}}" class="img-responsive" style="    display: block;
-    max-width: 100%;
-    height: auto;
-    width: 100%;
-    max-height: 230px;
-    object-fit: cover;
-    object-position: 100%;"/>
+      <div class="categorBlockInner">
+        <div class="col-md-4 col-sm-6 col-xs-12" (click)="redirectToArticleDetail(article.source , singleArticle)" *ngFor="let singleArticle of article.articles;">
+          <div class="singleArticle">
+            <div class="posR">
+              <span class="articleSpanR" *ngIf="singleArticle.author != null">Author : {{singleArticle.author}}</span>
+              <span class="articleSpanR" *ngIf="singleArticle.author == null">Author : Unknown</span>
+              <img *ngIf="singleArticle.urlToImage" src="{{singleArticle.urlToImage}}" class="img-responsive articleImage" />
+              <img *ngIf="!singleArticle.urlToImage" src="../../../assets/img/no_image_available.jpeg" class="img-responsive articleImage" />
+            </div>
+            <div class="col-xs-12" class="articleTitleDiv">
+              <p class="articleTitleP">{{singleArticle.title}}</p>
+              <span class="articleSpanL">Updated : {{singleArticle.publishedAt | date : 'medium'}}</span>
+            </div>
           </div>
-          <div class="col-xs-12" style="min-height:100px;">
-          <p style="    display: -webkit-box;
-    max-width: 100%;
-    height: 69px;
-    margin: 0 auto;
-    font-size: 16px;
-    line-height: 1.4;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;padding: 5px 0;">{{singleArticle.title}}</p>
-          <span class="articleSpanL">Source : {{article.source}}</span>
-          
-        </div>
         </div>
       </div>
-      </div>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-3 col-sm-3 col-xs-3 text-center twitterBlock">
+    <div>
+      <a class="twitter-timeline" data-lang="en" data-width="500" data-height="800" data-dnt="true" href="https://twitter.com/nchkapp17/lists/newslist"></a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+      </script>
     </div>
   </div>
 </div>

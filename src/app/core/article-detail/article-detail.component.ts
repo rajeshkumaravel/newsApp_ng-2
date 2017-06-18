@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ArticlesService } from "../../utils/services/articles/articles.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-article-detail',
@@ -6,10 +9,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article-detail.component.css']
 })
 export class ArticleDetailComponent implements OnInit {
+  articleDetail: any;
 
-  constructor() { }
+  constructor( private route: ActivatedRoute , 
+               private articlesService : ArticlesService ,
+               private router: Router,
+               private titleService: Title ) {
+   }
 
   ngOnInit() {
+    this.route
+      .params.subscribe((params: any) => {
+       this.articleDetail = JSON.parse(params["detail"]);
+       this.setTitle(this.articleDetail.title);
+      //  location.reload();
+      });
+        
+  }
+
+  public setTitle(title) {
+    this.titleService.setTitle( title );
   }
 
 }
