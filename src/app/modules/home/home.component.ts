@@ -13,15 +13,6 @@ export class HomeComponent implements OnInit {
   result: any;
   public randomArticles : any;
   public constructor(private articlesService : ArticlesService , private router: Router , private titleService: Title) {
-    // this.articlesService.getServerStatus().subscribe(result => {
-    //   console.log(result)
-    //   if(result) {
-    //     console.log("connected")
-    //   }
-    //   else {
-    //     console.log("not connected")
-    //   }
-    // });
   }
 
   ngOnInit() {

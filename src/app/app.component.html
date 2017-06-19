@@ -1,58 +1,5 @@
-<style>
-    .navbar-default {
-    background-color: #2874F0;
-    border-color: #2874F0;
-    color: white;
-  }
-  .navbar-default .navbar-toggle {
-    border-color: white;
-  }
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: white;
-  }
-  .navbar-default .navbar-nav>li>a {
-    color: white;
-    font-size: 1.2em;
-    letter-spacing: 2px;
-    font-weight: lighter;
-    line-height: 45px;
-    transition: all 0.3s ease-in-out;
-  }
-   .navbar-default .navbar-nav>li:hover > a {
-    text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
-    background-color: #1162e4;
-   }
-  .navbar {
-    border-radius: 0;
-    min-height: 70px;
-  }
-  .navbar-brand {
-    padding: 0;
-    height: auto;
-  }
-  .navbar-brand img {
-    height: 75px;
-    width: 108px;
-  }
-  .activeNavBarCategory {
-    text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
-    background-color: #1162e4;
-  }
-  .zBar {
-    cursor: pointer;
-  }
-  .logoMain {
-    font-family: 'News Cycle', sans-serif;
-    font-size: 32px;
-    color: white;
-    padding-left: 5px;
-    line-height: 2em;
-    letter-spacing: 0.1em;
-  }
-</style>
 <nav class="navbar navbar-default row">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -61,23 +8,18 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">
-        <!--<img class="img img-responsive" src="../assets/img/icon.png" />-->
-        
         <p class="logoMain"><i class="fa fa-globe" aria-hidden="true"></i>News App</p>
       </a>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
         <li id="technology" class="zBar"><a (click)="redirectToCategoryListHome('technology')">Technology</a></li>
         <li id="general" class="zBar"><a (click)="redirectToCategoryListHome('general')">General</a></li>
         <li id="sports" class="zBar"><a (click)="redirectToCategoryListHome('sports')">Sports</a></li>
         <li id="business" class="zBar"><a (click)="redirectToCategoryListHome('business')">Business</a></li>
         <li id="nature" class="zBar"><a (click)="redirectToCategoryListHome('nature')">Science and Nature</a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 <router-outlet></router-outlet>

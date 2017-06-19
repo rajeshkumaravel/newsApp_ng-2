@@ -29,7 +29,6 @@
     font-size: 1em;
     font-weight: 400;
     font-style: normal;
-    font-family: "times new roman", times, serif;
     color: #999;
     display: block;
     line-height: 2em;
@@ -37,4 +36,20 @@
   }
   img {
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+  .newsFont {
+    font-family: 'News Cycle', sans-serif;
+  }
+  h2.newsFont {
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  .authorSPanLS {
+    letter-spacing: 1.5px;
+  }
+  .faIconValign {
+    vertical-align: middle;
+  }
+  .externalLink:visited {
+    color: #1162e4;
   }

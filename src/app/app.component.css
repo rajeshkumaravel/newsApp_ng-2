@@ -1,0 +1,51 @@
+.navbar-default {
+    background-color: #2874F0;
+    border-color: #2874F0;
+    color: white;
+}
+.navbar-default .navbar-toggle {
+    border-color: white;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+.navbar-default .navbar-nav>li>a {
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 3px;
+    font-weight: lighter;
+    line-height: 45px;
+    transition: all 0.3s ease-in-out;
+    font-family: 'News Cycle', sans-serif;
+}
+.navbar-default .navbar-nav>li:hover > a {
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+    background-color: #1162e4;
+}
+.navbar {
+    border-radius: 0;
+    min-height: 70px;
+}
+.navbar-brand {
+    padding: 0;
+    height: auto;
+}
+.navbar-brand img {
+    height: 75px;
+    width: 108px;
+}
+.activeNavBarCategory {
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+    background-color: #1162e4;
+}
+.zBar {
+    cursor: pointer;
+}
+.logoMain {
+    font-family: 'News Cycle', sans-serif;
+    font-size: 32px;
+    color: white;
+    padding-left: 5px;
+    line-height: 2em;
+    letter-spacing: 0.1em;
+}

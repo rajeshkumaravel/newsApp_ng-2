@@ -22,7 +22,6 @@ export class ArticleDetailComponent implements OnInit {
       .params.subscribe((params: any) => {
        this.articleDetail = JSON.parse(params["detail"]);
        this.setTitle(this.articleDetail.title);
-      //  location.reload();
       });
         
   }

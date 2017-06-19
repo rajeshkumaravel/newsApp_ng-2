@@ -12,7 +12,7 @@
 <div class="row">
   <div class="col-md-9">
   <div class="col-xs-12 sourceH3" *ngFor="let article of result">
-    <h3 class="col-xs-12">{{article.source}}</h3>
+    <h3 class="col-xs-12 articleSourceH3">{{article.source}}</h3>
     <div class="categoryBlock row">
       <div class="categorBlockInner">
         <div class="col-md-4 col-sm-6 col-xs-12" (click)="redirectToArticleDetail(article.source , singleArticle)" *ngFor="let singleArticle of article.articles;">

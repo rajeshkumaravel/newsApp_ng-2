@@ -23,7 +23,11 @@ export class CateogoryArticleComponent implements OnInit {
       if (this.category == "science and nature") {
         this.category = "nature";
       }
-      var d = document.getElementById(this.category);
+      let elems = document.querySelectorAll(".zBar");
+      [].forEach.call(elems, function (el) {
+        el.classList.remove("activeNavBarCategory");
+      });
+      let d = document.getElementById(this.category);
         d.className += " activeNavBarCategory";
         this.redirectionCheck(this.category , "top");
         this.selectedSortBy = "top";
