@@ -1,6 +1,6 @@
 # NewsApp
 
-NewsApp project is collaborated news platform which provides live news article from different sources.
+NewsApp project is collaborated news platform which provides live news article from different sources and developed using **AngularJS 2**.
 
 ## Getting Started
 
