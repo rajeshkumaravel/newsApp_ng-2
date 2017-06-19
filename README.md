@@ -1,28 +1,59 @@
 # NewsApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.3.
+NewsApp project is collaborated news platform which provides live news article from different sources.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+These instructions will get you a copy of the project up and running on your local machine.
 
-## Code scaffolding
+### Prerequisites
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+```
+Node JS - Version greater than 6.10.x
+```
+```
+npm - Version greater than 3.10.x
+```
+```
+Angular CLI - Version greater than 1.0.x
+npm install -g @angular/cli
+```
+### Installing
 
-## Build
+Clone project
+```
+git clone https://github.com/rajeshkumaravel/newsApp_ng-2.git
+```
+Navigate to **newsApp_ng-2** folder
+```
+cd newsApp_ng-2
+```
+Checkout to **newsapp_master** branch
+```
+git checkout newsapp_master
+```
+Install required dependencies
+```
+npm install
+```
+### Running Application
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Once all the dependencies are installed execute
+```
+ng serve
+```
+Check for the url in console to open application
 
-## Running unit tests
+## Built With
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* [Angular CLI](https://cli.angular.io/)
 
-## Running end-to-end tests
+## Versioning
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+* [git](https://github.com/)
 
-## Further help
+## Authors
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* **Rajesh Kumaravel** - [NewsApp](https://github.com/rajeshkumaravel/newsApp_ng-2)
+
+
