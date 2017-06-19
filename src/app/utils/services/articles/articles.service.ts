@@ -17,6 +17,7 @@ export class ArticlesService {
   }
 
   getRandomArticles() {
+    window.console.log("called")
     return this.http.get(NEWS_CONST.API_SERVER_BASE+NEWS_CONST.ROUTE.GET_RANDOM_ARTICLES)
     .map((response : Response)=>{
       return response.json();

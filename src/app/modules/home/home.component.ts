@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from "../../utils/services/articles/articles.service";
 import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from "@angular/platform-browser";
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,7 @@ import { Title } from "@angular/platform-browser";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  busy: Subscription;
   results: any;
   result: any;
   public randomArticles : any;
@@ -21,7 +23,7 @@ export class HomeComponent implements OnInit {
   }
 
   getRandomArticles () {
-    this.articlesService.getRandomArticles().subscribe(result => {
+    this.busy = this.articlesService.getRandomArticles().subscribe(result => {
       this.results = result;
     });
   }

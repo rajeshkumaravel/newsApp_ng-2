@@ -6,7 +6,8 @@ import { Title } from "@angular/platform-browser";
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
-  styleUrls: ['./article-detail.component.css']
+  styleUrls: ['./article-detail.component.css'],
+  providers :[ArticlesService]
 })
 export class ArticleDetailComponent implements OnInit {
   articleDetail: any;

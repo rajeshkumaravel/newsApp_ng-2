@@ -3,18 +3,23 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes , RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BusyModule } from 'angular2-busy';
 
+
+// Import Component
 import { AppComponent } from './app.component';
 import { HomeComponent } from './modules/home/home.component';
-
-
-import { ArticlesService } from "./utils/services/articles/articles.service";
-
-
-import { NEWS_CONST } from "./app.news-constants";
 import { CateogoryArticleComponent } from './core/cateogory-article/cateogory-article.component';
 import { ArticleDetailComponent } from './core/article-detail/article-detail.component';
 
+// Import Service
+import { ArticlesService } from "./utils/services/articles/articles.service";
+
+// Import Constants
+import { NEWS_CONST } from "./app.news-constants";
+
+// Routes for Navigation
 const newsRoutes : Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path : 'home' , component : HomeComponent , pathMatch : 'full' },
@@ -27,7 +32,9 @@ const newsRoutes : Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(newsRoutes)
+    RouterModule.forRoot(newsRoutes),
+    BusyModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,
