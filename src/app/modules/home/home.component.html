@@ -1,80 +1,32 @@
-<style>
-  .singleArticle {
-    /*background: lightgray;*/
-    padding: 10px 15px;
-    margin: 20px 0;
-    height: 300px;
-    position: relative;
-  }
-
-  .articleSpanL {
-    float: left;
-    bottom: 10px;
-    position: absolute;
-    left: 15px;
-  }
-
-  .articleSpanR {
-    float: right;
-    bottom: 10px;
-    position: absolute;
-    right: 15px;
-  }
-
-  .categoryBlock {
-    /*display: inline-block;*/
-    padding: 20px 20px;
-  }
-  .homeBG {
-    background-color: #f3f3f3;
-    margin-top: -20px;
-  }
-  .singleArticle {
-    padding: 10px 15px;
-    margin: 20px 0;
-    height: 300px;
-    position: relative;
-    border: 1px solid #eee;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.5);
-}
-.footerMain {
-      background-color: rgba(255, 255, 255, 0.7);
-    color: black;
-    padding: 15px 0;
-
-}
-.textBold {
-  font-size: bold;
-}
-.poweredBy {
-      /*position: absolute;*/
-    right: 15px;
-    top: 140px;
-}
-.categoryCapitalize {
-  text-transform: capitalize;
-}
-</style>
 <div class="row homeBG">
   <div class="col-xs-12" *ngFor="let article of results">
     <div class="categoryBlock row">
-      <div style="background: white;
-    width: 100%;
-    height: 100%;
-    display: block;
-    float: left;">
-      <div class="col-xs-12 col-md-3 singleArticle" style="background: transparent;text-align: center;display: table-cell;padding: 5% 15px;">
-        <h3 class="categoryCapitalize">{{article.category}}</h3>
-        <button type="button" class="btn btn-primary" (click)="redirectToCategoryList(article.category)">View All</button>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12" *ngFor="let singleArticle of article.data.articles; let i=index">
-        <div class="singleArticle" *ngIf='i<=2'>
-          <img src="{{singleArticle.urlToImage}}" height="150px" width="150px" />
-          <p>{{singleArticle.title}}</p>
-          <span class="articleSpanL">Source : {{article.data.source}}</span>
-          <span class="articleSpanR">Author : {{singleArticle.author}}</span>
+      <div class="rowCard">
+        <div class="categoryBlock row">
+          <div class="categorBlockInner col-xs-12">
+            <div class="row">
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="singleArticle uniqueCard">
+                  <h3 class="categoryCapitalize">{{article.category}}</h3>
+                  <button type="button" class="btn btn-primary viewAllBtn" (click)="redirectToCategoryList(article.category)">View All</button>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12" (click)="redirectToArticleDetail(article.source , singleArticle)" *ngFor="let singleArticle of article.data.articles; let i=index">
+                <div class="singleArticle" *ngIf='i<=2'>
+                  <div class="posR">
+                    <img *ngIf="singleArticle.urlToImage" src="{{singleArticle.urlToImage}}" class="img-responsive articleImage" />
+                    <img *ngIf="!singleArticle.urlToImage" src="../../../assets/img/no_image_available.jpeg" class="img-responsive articleImage"
+                    />
+                  </div>
+                  <div class="col-xs-12" class="articleTitleDiv">
+                    <p class="articleTitleP">{{singleArticle.title}}</p>
+                    <span class="articleSpanR">Source : {{article.data.source}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   </div>
@@ -89,4 +41,4 @@
   <div class="col-md-6 col-sm-12 text-right poweredBy">
     <p>News Soure : Powered by <a href="https://newsapi.org/" target="_blank">News API</a></p>
   </div>
-  </div> 
+</div>
