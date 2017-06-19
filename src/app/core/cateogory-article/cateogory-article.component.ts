@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ArticlesService } from "../../utils/services/articles/articles.service";
 import { Title } from "@angular/platform-browser";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cateogory-article',
@@ -9,9 +10,11 @@ import { Title } from "@angular/platform-browser";
   styleUrls: ['./cateogory-article.component.css']
 })
 export class CateogoryArticleComponent implements OnInit {
+  
   selectedSortBy: any;
   result: string;
   category: any;
+  busy: Subscription;
 
   constructor( private route: ActivatedRoute , private articlesService : ArticlesService , private router: Router , private titleService: Title) { 
    }
@@ -69,35 +72,35 @@ export class CateogoryArticleComponent implements OnInit {
   
   getTechnologyArticles(sort) {
     var reqObj = {sortType : sort}
-    this.articlesService.getTechnologyArticles(reqObj).subscribe(result => {
+     this.busy = this.articlesService.getTechnologyArticles(reqObj).subscribe(result => {
       this.result = result.filter(n => n);
     });
   }
 
   getGeneralArticles(sort) {
     var reqObj = {sortType : sort}
-    this.articlesService.getGeneralArticles(reqObj).subscribe(result => {
+    this.busy = this.articlesService.getGeneralArticles(reqObj).subscribe(result => {
       this.result = result.filter(n => n);
     });
   }
   
   getSportsArticles(sort) {
     var reqObj = {sortType : sort}
-    this.articlesService.getSportsArticles(reqObj).subscribe(result => {
+    this.busy = this.articlesService.getSportsArticles(reqObj).subscribe(result => {
       this.result = result.filter(n => n);
     });
   }
 
   getBusinessArticles(sort) {
     var reqObj = {sortType : sort}
-    this.articlesService.getBusinessArticles(reqObj).subscribe(result => {
+    this.busy = this.articlesService.getBusinessArticles(reqObj).subscribe(result => {
       this.result = result.filter(n => n); 
     });
   }
 
   getScienceAndNatureArticles(sort) {
     var reqObj = {sortType : sort}
-    this.articlesService.getScienceAndNatureArticles(reqObj).subscribe(result => {
+    this.busy = this.articlesService.getScienceAndNatureArticles(reqObj).subscribe(result => {
       this.result = result.filter(n => n); 
     });
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ArticlesService } from "../../utils/services/articles/articles.service";
 import { Title } from "@angular/platform-browser";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-article-detail',
@@ -10,8 +11,10 @@ import { Title } from "@angular/platform-browser";
   providers :[ArticlesService]
 })
 export class ArticleDetailComponent implements OnInit {
+  
   articleDetail: any;
-
+  busy: Subscription;
+  
   constructor( private route: ActivatedRoute , 
                private articlesService : ArticlesService ,
                private router: Router,

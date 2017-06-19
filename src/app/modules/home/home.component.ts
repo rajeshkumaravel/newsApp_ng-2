@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from "../../utils/services/articles/articles.service";
 import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from "@angular/platform-browser";
-import {Subscription} from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
